@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head> <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <title>Quiz</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Comic Neue', cursive;
+    }
+    .page {
+      display: none;
+      height: 100%;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .active {
+      display: flex;
+    }
+    .question {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+    .answers button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: background 0.2s;
+    }
+    .answers button:hover {
+      background-color: #f0f0f0;
+    }
+    .bg-quiz {
+      background: url('ảnh mây.jpg') no-repeat center center/cover;
+    }
+    .bg-final {
+      background: url('1.jpg') no-repeat center center/cover;
+      position: relative;
+      color: white;
+    }
+    .overlay-text {
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Trang 1 -->
+  <div class="page active bg-quiz" id="page1">
+    <div class="question">Câu hỏi 1: Ngày đầu tiên hẹn hò ở đâu </div>
+    <div class="answers">
+      <button onclick="nextPage(2)">A. Dutra Co Working</button>
+      <button onclick="nextPage(2)">B. DUtra Home</button>
+      <button onclick="nextPage(2)">C. Ban Công</button>
+      <button onclick="nextPage(2)">D. Trà lá</button>
+    </div>
+  </div>
+
+  <!-- Trang 2 -->
+  <div class="page bg-quiz" id="page2">
+    <div class="question">Câu hỏi 2: Ngày chính thức yêu</div>
+    <div class="answers">
+      <button onclick="nextPage(3)">A. 16/5</button>
+      <button onclick="nextPage(3)">B. 16/4</button>
+      <button onclick="nextPage(3)">C. 16/3</button>
+      <button onclick="nextPage(3)">D. 14/6</button>
+    </div>
+  </div>
+
+  <!-- Trang 3 -->
+  <div class="page bg-quiz" id="page3">
+    <div class="question">Câu hỏi 3: ...</div>
+    <div class="answers">
+      <button onclick="nextPage(4)">A. Đáp án 1</button>
+      <button onclick="nextPage(4)">B. Đáp án 2</button>
+      <button onclick="nextPage(4)">C. Đáp án 3</button>
+      <button onclick="nextPage(4)">D. Đáp án 4</button>
+    </div>
+  </div>
+
+  <!-- Trang 4: Lời căn dặn -->
+  <div class="page bg-final" id="page4">
+    <div class="overlay-text">
+      <p>Giang à, ngày kia thôi là a phải xuống Hà Nội rồi. Mình tuy k còn gần vs nhau như trước nữa, nhưng a hứa vs e a vẫn sẽ về Thái Nguyên đều đặn, vẫn về để được gặp e và chơi cùng e. Mấy ngày nữa thôi, a vs e thành tân sinh viên r, mình lại bận rộn như trước, nhưng mình vẫn sẽ dành thời gian cho nhau và học bài cùng nhau mỗi tối.</p>
+      <p>E lên đại học a nhiều cái lo lắm, lo rất rất nhiều từ sinh hoạt tới học tập. A mong e vẫn sẽ luôn quyết tâm hết sức với lựa chọn của mình, k được bỏ cuộc nha, chayooooo!!!!.</p>
+      <p>Còn mấy vấn đề về tình yêu thì a hoàn toàn tin tưởng e, e cũng biết mà nên a sẽ k lo nữa. E nhớ phải ăn uống đầy đủ nghe chưa, 1 ngày e chỉ được phép nhịn 1 bữa để e có nhiều năng lượng nhất, hạn chế ăn cay lại vì nó rất đau dạ dày.</p>
+      <p>Sau e cũng tập ăn sáng dần đi, k ăn sáng thì e k có nhiều năng lượng đâu, sáng ra nhiều năng lương tiếp thu mới tốt nghe chưa. Cả sau a cũng sẽ mua e đai bụng giảm đau, lúc nào e rảnh e sạc vào r e massage lúc e đau bụng, lúc đấy a xót e lắm đấy có biết k hã đồ thúi.</p>
+      <p>K được lười nghe chưa, khi nào e sắp đến ngày a sẽ nhắc e sạc trước, cái này e tùy chỉnh độ nóng các thứ được nên tiện lắm. Thui a cũng chỉ dặn dò z thui, giữ gìn sức khỏe, ăn uống đầy đủ, tập chăm sóc bản thân dần và cố gắng học tập nhennn.</p>
+      <p>A iêu e Giang nhìuuuuu &lt;3</p>
+    </div>
+  </div>
+
+  <script>
+    function nextPage(pageNumber) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + pageNumber).classList.add('active');
+    }
+  </script>
+</body>
+</html>
